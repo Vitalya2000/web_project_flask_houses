@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+  <h1>Дома</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Адрес</th>
+        <th>Округ, район</th>
+        <th>Серия дома</th>
+        <th>Количество этажей</th>
+        <th>Количество подъездов</th>
+        <th>Дата(год) постройки</th>
+        <th>Дата(год) сноса</th>
+        <th>Фото</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for house in houses %}
+        <tr>
+          <td>{{ house[1] }}</td>
+          <td>{{ house[2] }}</td>
+          <td>{{ house[3] }}</td>
+          <td>{{ house[4] }}</td>
+          <td>{{ house[5] }}</td>
+          <td>{{ house[6] }}</td>
+          <td>{{ house[7] }}</td>
+          <td><a href = "{{ house[8] }}"><img src="{{ house[8] }}" width="80" height="60"></a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+    <form action="/tools">
+      <input type="submit" value="Инструменты">
+    </form> 
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование данных{% endblock %}
+
+{% block content %}
+  <h1>Редактирование данных</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Адрес</th>
+        <th>Округ, район</th>
+        <th>Серия дома</th>
+        <th>Количество этажей</th>
+        <th>Количество подъездов</th>
+        <th>Дата(год) постройки</th>
+        <th>Дата(год) сноса</th>
+        <th>Фото дома</th>
+        <th>Подтвердить</th>
+        <th>Удалить</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for house in houses %}
+        <tr>
+            <form action="/tools/update" method="post">
+              <input type="hidden" name="id" value="{{ house[0] }}">
+              <td><input type="text" name="address" value="{{ house[1] }}"></td>
+              <td><input type="text" name="district" value="{{ house[2] }}"></td>
+              <td><input type="text" name="type" value="{{ house[3] }}"></td>
+              <td><input type="text" name="quan_of_floors" value="{{ house[4] }}"></td>
+              <td><input type="text" name="quan_of_entrances" value="{{ house[5] }}"></td>
+              <td><input type="text" name="date_of_construction" value="{{ house[6] }}"></td>
+              <td><input type="text" name="date_of_destruction" value="{{ house[7] }}"></td>
+              <td><input type="text" name="photo" value="{{ house[8] }}"></td>
+              <td><input type="submit" value="Подтвердить изменения"></td>
+            </form>
+            <td>
+              <form action="/tools/delete" method="post">
+                <input type="hidden" name="id" value="{{ house[0] }}">
+                <input type="submit" value="Удалить информацию о доме">
+              </form>
+            </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h2>Добавить новый дом</h2>
+    <form action="/tools/create" method="post">
+      <input type="text" name="address" placeholder="Адрес">
+      <input type="text" name="district" placeholder="Округ, район">
+      <input type="text" name="type" placeholder="Серия дома">
+      <input type="text" name="quan_of_floors" placeholder="Количество этажей">
+      <input type="text" name="quan_of_entrances" placeholder="Количество подъездов">
+      <input type="text" name="date_of_construction" placeholder="Дата(год) постройки">
+      <input type="text" name="date_of_destruction" placeholder="Дата(год) сноса">
+      <input type="text" name="photo" placeholder="Ссылка на фото">
+      <input type="submit" value="Добавить">
+    </form>
+  <form action="/">
+      <input type="submit" value="Назад на главную страницу">
+  </form> 
+{% endblock %}

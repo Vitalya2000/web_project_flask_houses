@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Другие инструменты{% endblock %}
+
+{% block content %}
+<h1>Найти дома по:</h1>
+    <form action="/tools/res_ent" method="post">
+      <input type="text" name="quan_of_entrances" placeholder="Количеству подъездов">
+      <input type="submit" value="Вывести дома с определенным количеством подъездов">
+    </form> 
+    <form action="/tools/search_address" method="post">
+      <input type="text" name="address" placeholder="Адресу">
+      <input type="submit" value="Найти дом(а) по адресу">
+    </form>
+    <form action="/tools/search_district" method="post">
+      <input type="text" name="district" placeholder="Округу или району">
+      <input type="submit" value="Найти дом(а) по округу или району">
+    </form>
+    <form action="/tools/search_type" method="post">
+      <input type="text" name="type" placeholder="Серии">
+      <input type="submit" value="Найти дом(а) по серии">
+    </form>
+    <form action="/tools/update">
+      <input type="submit" value="Редактировать записи">
+    </form>
+    <form action="/">
+      <input type="submit" value="Назад на главную страницу">
+    </form>
+
+{% endblock %}
