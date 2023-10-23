@@ -157,18 +157,6 @@ date_of_construction=%s, date_of_destruction=%s, photo=%s WHERE id=%s''',
     return redirect(url_for('update'))
 
 
-@app.route('/delete', methods=['POST'])
-def delete():
-    conn = psycopg2.connect(database="houses", user="postgres", password="postgres", host="localhost", port="5432")
-    cur = conn.cursor()
-    h_id = request.form['id']
-    cur.execute("DELETE FROM hr_houses WHERE id = {}".format(h_id))
-    conn.commit()
-    cur.close()
-    conn.close()
-    return redirect(url_for('index'))
-
-
 @app.route('/tools/delete', methods=['POST'])
 def modify_delete():
     conn = psycopg2.connect(database="houses", user="postgres", password="postgres", host="localhost", port="5432")
